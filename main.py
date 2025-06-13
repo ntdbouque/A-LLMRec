@@ -12,7 +12,7 @@ if __name__ == "__main__":
     
     # GPU train options
     parser.add_argument("--multi_gpu", action='store_true')
-    parser.add_argument('--gpu_num', type=int, default=0)
+    parser.add_argument('--gpu_num', type=int, default=5)
     
     # model setting
     parser.add_argument("--llm", type=str, default='opt', help='flan_t5, opt, vicuna')
@@ -40,8 +40,11 @@ if __name__ == "__main__":
     args.device = 'cuda:' + str(args.gpu_num)
     
     if args.pretrain_stage1:
+        print('PRETRAIN STAGE 1')
         train_model_phase1(args)
     elif args.pretrain_stage2:
+        print('PRETRAIN MODEL PHASE 2')
         train_model_phase2(args)
     elif args.inference:
+        print('INFER')
         inference(args)

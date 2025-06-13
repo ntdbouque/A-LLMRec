@@ -9,6 +9,8 @@ from utils import *
 
 from tqdm import tqdm
 
+from icecream import ic
+
 parser = argparse.ArgumentParser()
 parser.add_argument('--dataset', required=True)
 parser.add_argument('--batch_size', default=128, type=int)
@@ -23,11 +25,11 @@ parser.add_argument('--l2_emb', default=0.0, type=float)
 parser.add_argument('--device', default='cpu', type=str)
 parser.add_argument('--inference_only', default=False, action='store_true')
 parser.add_argument('--state_dict_path', default=None, type=str)
-
 args = parser.parse_args()
 
+
 if __name__ == '__main__':
-    
+    ic(args)
     # global dataset
     preprocess(args.dataset)
     dataset = data_partition(args.dataset)
